@@ -1,0 +1,36 @@
+package day6;
+
+import java.util.Scanner;
+
+public class Maxfreq {
+	public static void main(String[]args){
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int arr[] = new int[n];
+		for(int i = 0;i < arr.length; i++){
+			arr[i] = sc.nextInt();
+		}
+		boolean vis[] = new boolean[n];
+		int maxfre = 0;
+		int maxEle = arr[0];
+		for(int i = 0;i < arr.length;i++){
+			if(vis[i]){
+				continue;
+			}
+			int count = 1;
+			for(int j = i + 1;j < arr.length; j++){
+				if(arr[i] == arr[j]){
+					count++;
+					vis[j] = true;
+				}
+			}
+			System.out.println(arr[i] + " " + count);
+			if(count > maxfre){
+				maxfre = count;
+				maxEle = arr[i];
+			}
+		}
+		System.out.println("Highest Element: " +maxEle);
+		System.out.println("Highest Frequency: " +maxfre);
+	}
+}
